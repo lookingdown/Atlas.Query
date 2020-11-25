@@ -78,6 +78,14 @@ trait Where
 
         return $this;
     }
+    
+    public function orLike(array $columnsValues)
+    {
+        foreach ($columnsValues as $key => $val) {
+                $this->orWhere("`{$key}` LIKE ", '%' .$val. '%');
+        }
+        return $this;
+    }
 
     public function resetWhere()
     {
